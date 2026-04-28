@@ -50,6 +50,11 @@ resource "aws_codebuild_project" "filmdrop_ui_codebuild" {
       name  = "CONTENT_BUCKET"
       value = var.filmdrop_ui_bucket_name
     }
+
+    environment_variable {
+      name  = "FILMDROP_UI_SOURCE_URL"
+      value = var.filmdrop_ui_source_url
+    }
   }
 
   logs_config {
@@ -83,6 +88,7 @@ resource "null_resource" "trigger_filmdrop_ui_upgrade" {
     account                 = data.aws_caller_identity.current.account_id
     filmdrop_ui_release_tag = var.filmdrop_ui_release_tag
     filmdrop_ui_config      = var.filmdrop_ui_config
+    filmdrop_ui_source_url  = var.filmdrop_ui_source_url
     new_source              = aws_s3_bucket.filmdrop_ui_source_config.id
     new_build_spec          = aws_s3_object.filmdrop_ui_build_spec.etag
   }
