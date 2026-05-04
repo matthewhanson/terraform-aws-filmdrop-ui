@@ -7,7 +7,7 @@ phases:
       - export FILMDROP_UI_URL="${FILMDROP_UI_SOURCE_URL:-https://github.com/Element84/filmdrop-ui/archive/refs/tags/${FILMDROP_UI_TAG}.tar.gz}"
       - echo "Source URL - $FILMDROP_UI_URL"
       - wget --secure-protocol=TLSv1_2 -q -O filmdrop-ui.tgz "$FILMDROP_UI_URL"
-      - export FILMDROP_UI_DIR="filmdrop-ui-${FILMDROP_UI_TAG:1}"
+      - export FILMDROP_UI_DIR="filmdrop-ui-${FILMDROP_UI_TAG#v}"
       - tar -xzf filmdrop-ui.tgz
       - cd "$FILMDROP_UI_DIR"
       - rm -f ./src/assets/config.*
