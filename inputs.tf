@@ -19,8 +19,8 @@ variable "filmdrop_ui_release_tag" {
   description = "FilmDrop UI Release"
   type        = string
   validation {
-    condition     = substr(var.filmdrop_ui_release_tag, 0, 1) == "v" && substr(var.filmdrop_ui_release_tag, 1, 2) >= 4
-    error_message = "The filmdrop_ui_release_tag value must be a filmdrop-ui release >= v4.0.0"
+    condition     = var.filmdrop_ui_source_url != "" || (substr(var.filmdrop_ui_release_tag, 0, 1) == "v" && substr(var.filmdrop_ui_release_tag, 1, 2) >= 4)
+    error_message = "The filmdrop_ui_release_tag value must be a filmdrop-ui release >= v4.0.0 (or supply filmdrop_ui_source_url to use a custom archive)"
   }
 }
 
@@ -45,7 +45,7 @@ variable "filmdrop_ui_bucket_name" {
 }
 
 variable "filmdrop_ui_source_url" {
-  description = "Optional override for the FilmDrop UI source archive URL fetched by CodeBuild. Lets you point at a fork (e.g. https://github.com/<your-fork>/filmdrop-ui/archive/refs/tags/<tag>.tar.gz). The tag must still match filmdrop_ui_release_tag so the extracted directory name (filmdrop-ui-<tag without leading v>) is correct. When empty, defaults to the Element84/filmdrop-ui release tarball."
+  description = "Optional override for the FilmDrop UI source archive URL fetched by CodeBuild. Lets you point at a fork (e.g. https://github.com/<your-fork>/filmdrop-ui/archive/refs/tags/<tag>.tar.gz). When set, filmdrop_ui_release_tag may be any string (semver not required). When empty, defaults to the Element84/filmdrop-ui release tarball."
   type        = string
   default     = ""
 }
