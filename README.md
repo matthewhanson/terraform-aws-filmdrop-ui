@@ -175,6 +175,7 @@ No modules.
 | <a name="input_filmdrop_ui_logo"></a> [filmdrop\_ui\_logo](#input\_filmdrop\_ui\_logo) | The base64 encoded file contents of the supplied custom logo | `string` | n/a | yes |
 | <a name="input_filmdrop_ui_logo_file"></a> [filmdrop\_ui\_logo\_file](#input\_filmdrop\_ui\_logo\_file) | File of the supplied custom logo | `string` | n/a | yes |
 | <a name="input_filmdrop_ui_release_tag"></a> [filmdrop\_ui\_release\_tag](#input\_filmdrop\_ui\_release\_tag) | FilmDrop UI Release | `string` | n/a | yes |
+| <a name="input_filmdrop_ui_source_url"></a> [filmdrop\_ui\_source\_url](#input\_filmdrop\_ui\_source\_url) | Optional override for the FilmDrop UI source archive URL fetched by CodeBuild. Lets you point at a fork (e.g. https://github.com/<your-fork>/filmdrop-ui/archive/refs/tags/<tag>.tar.gz). When set, filmdrop\_ui\_release\_tag may be any string (semver not required). When empty, defaults to the Element84/filmdrop-ui release tarball. | `string` | `""` | no |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | FilmDrop VPC ID | `string` | n/a | yes |
 | <a name="input_vpc_private_subnet_ids"></a> [vpc\_private\_subnet\_ids](#input\_vpc\_private\_subnet\_ids) | List of private subnet ids in the FilmDrop vpc | `list(string)` | `[]` | no |
 | <a name="input_vpc_security_group_ids"></a> [vpc\_security\_group\_ids](#input\_vpc\_security\_group\_ids) | List of security groups in the FilmDrop vpc | `list(string)` | `[]` | no |
